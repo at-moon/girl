@@ -1,5 +1,6 @@
 package com.atmoon.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.atmoon.aspect.HttpAspect;
 import com.atmoon.repository.GirlRepository;
 import com.atmoon.service.GirlService;
@@ -16,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
@@ -28,6 +30,21 @@ public class GirlController {
 
     @Autowired
     private GirlService girlService;
+
+    /**
+     * 查询所有女生列表
+     * @return
+     */
+    @GetMapping(value = "/jsonTest")
+    public JSONObject jsonTest(){
+        JSONObject resultObject = new JSONObject(new LinkedHashMap<>());
+        double version = Double.parseDouble("1.0");
+        Girl girl = new Girl();
+        girl.setCity("1.0");
+        girl.setMoney(version);
+        resultObject.put("girl",girl);
+        return  resultObject;
+    }
 
     /**
      * 查询所有女生列表

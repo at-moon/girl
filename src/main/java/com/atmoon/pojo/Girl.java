@@ -17,6 +17,8 @@ public class Girl{
     @Min(value = 18,message = "禁止未成年入内")
     private Integer age;
 
+    private double money;
+
     public Integer getId() {
         return id;
     }
@@ -41,12 +43,21 @@ public class Girl{
         this.age = age;
     }
 
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
     @Override
     public String toString() {
         return "Girl{" +
                 "id=" + id +
                 ", city='" + city + '\'' +
                 ", age=" + age +
+                ", money=" + money +
                 '}';
     }
 }
