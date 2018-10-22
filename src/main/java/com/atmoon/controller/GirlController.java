@@ -32,7 +32,7 @@ public class GirlController {
     private GirlService girlService;
 
     /**
-     * 查询所有女生列表
+     * json测试
      * @return
      */
     @GetMapping(value = "/jsonTest")
