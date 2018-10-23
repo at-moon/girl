@@ -4,4 +4,4 @@ server:
     context-path: /demo
 girl:
   city: gz
-  age: 18
+  age: ${random.int(15)}
