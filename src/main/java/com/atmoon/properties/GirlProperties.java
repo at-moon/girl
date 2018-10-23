@@ -3,6 +3,8 @@ package com.atmoon.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @ConfigurationProperties(prefix = "girl")
 public class GirlProperties {
@@ -10,6 +12,8 @@ public class GirlProperties {
     private Integer age;
 
     private String city;
+
+    private List<String> friend;
 
     public Integer getAge() {
         return age;
@@ -25,5 +29,13 @@ public class GirlProperties {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<String> getFriend() {
+        return friend;
+    }
+
+    public void setFriend(List<String> friend) {
+        this.friend = friend;
     }
 }

@@ -5,3 +5,6 @@ server:
 girl:
   city: gz
   age: ${random.int(15)}
+  friend:
+    - Lily
+    - Alisa

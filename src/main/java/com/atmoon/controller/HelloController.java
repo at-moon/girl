@@ -14,7 +14,7 @@ public class HelloController {
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public String say(){
-        return girlProperties.getCity() + girlProperties.getAge();
+        return girlProperties.getCity() + girlProperties.getAge() + girlProperties.getFriend();
     }
 
 }
