@@ -5,23 +5,16 @@ import com.atmoon.exception.GirlException;
 import com.atmoon.pojo.Girl;
 import com.atmoon.repository.GirlRepository;
 import com.atmoon.vo.PageConfig;
-import org.hibernate.query.criteria.internal.predicate.ComparisonPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -43,7 +36,7 @@ public class GirlService {
         girlRepository.save(girlB);
     }
 
-    public void getAge(Integer id) throws Exception {
+    public void getAge(Integer id) {
         Girl girl = girlRepository.findById(id).get();
         Integer age = girl.getAge();
         if (age < 18) {
