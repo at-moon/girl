@@ -5,9 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
 @Entity
-public class Girl{
+public class Girl implements Serializable {
+
+    private static final long serialVersionUID = -7402143330657397684L;
+
+    public Girl() {
+    }
+
+    public Girl(String city, @Min(value = 18, message = "禁止未成年入内") Integer age) {
+        this.city = city;
+        this.age = age;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
