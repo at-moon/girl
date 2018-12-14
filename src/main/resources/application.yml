@@ -34,5 +34,10 @@ spring:
         min-idle: 0
     # 连接超时时间（毫秒）
     timeout: 1000ms
+  rabbitmq:
+    host: 192.168.197.128
+    port: 5672
+    username: admin
+    password: admin
 logging:
   path: ./log

@@ -5,6 +5,7 @@ import com.atmoon.aspect.HttpAspect;
 import com.atmoon.repository.GirlRepository;
 import com.atmoon.service.GirlService;
 import com.atmoon.pojo.Girl;
+import com.atmoon.utils.RabbitMQUtil;
 import com.atmoon.utils.ResultUtil;
 import com.atmoon.vo.PageConfig;
 import com.atmoon.vo.Result;
@@ -30,6 +31,9 @@ public class GirlController {
 
     @Autowired
     private GirlService girlService;
+
+    @Autowired
+    private RabbitMQUtil rabbitMQUtil;
 
     /**
      * json测试
@@ -133,6 +137,11 @@ public class GirlController {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         pageConfig.setSort(sort);
         return girlService.findAllByParams(girl,pageConfig).getContent();
+    }
+
+    @PostMapping(value = "/rabbit/send")
+    public void sendGirl(Girl girl) {
+        rabbitMQUtil.sendGirl(girl);
     }
 
 }

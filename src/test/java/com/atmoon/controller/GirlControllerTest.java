@@ -1,6 +1,7 @@
 package com.atmoon.controller;
 
 import com.atmoon.pojo.Girl;
+import com.atmoon.utils.RabbitMQUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +28,9 @@ public class GirlControllerTest {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Autowired
+    private RabbitMQUtil rabbitMQUtil;
+
     @Test
     public void girlList() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/girls"))
@@ -47,5 +51,11 @@ public class GirlControllerTest {
 
         Assert.assertEquals(19 , operations.get("wuhan").getAge().longValue());
         Assert.assertEquals(21 , operations.get("xiamen").getAge().longValue());
+    }
+
+    @Test
+    public void sendGirl() {
+        Girl girl = new Girl("wuhan",19);
+        rabbitMQUtil.sendGirl(girl);
     }
 }
